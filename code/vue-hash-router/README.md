@@ -1,0 +1,27 @@
+# 构建步骤
+
+* 使用vue创建带vue-router的项目
+* 在src下创建vue-hash-router，并编写VueHashRouter类
+    - 构造函数
+        - 缓存传入对象
+        - 初始化routeMap为空对象
+        - 初始化data为响应式对象，带有current属性
+    - 静态方法install：用于注册组件
+        - 避免多次注册
+        - 缓存vue对象
+        - 调用vue的mixin方法，传入beforeCreate钩子，在beforeCreate钩子中
+            - 将初始化vue传入的router挂载到vue的原型的$router上
+            - 调用router实例的init方法
+    - init方法：初始化路由
+        - 调用createRouteMap方法，创建{path:component}map对象
+        - 调用initComponent方法，创建router-view、router-link组件
+        - 调用initEvent方法，监听hashchange事件
+    - createRouteMap方法：创建{path:component}map对象
+    - initComponent方法
+        - 创建router-link组件
+            - 接收to属性
+            - 监听click事件
+            - 事件触发时，改变location的hash值
+        - 创建router-view组件：渲染当前组件
+    - initEvent方法：监听hashchange事件，将current修改为当前hash
+* 将原vueRouter改为VueHashRouter
