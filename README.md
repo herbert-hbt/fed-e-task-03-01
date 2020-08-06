@@ -1,12 +1,12 @@
 # 简答题
 
-## 当我们点击按钮的时候动态给 data 增加的成员是否是响应式数据，如果不是的话，如果把新增成员设置成响应式数据，它的内部原理是什么
+## 1. 当我们点击按钮的时候动态给 data 增加的成员是否是响应式数据，如果不是的话，如果把新增成员设置成响应式数据，它的内部原理是什么
 
 答：
 - 不是，因为data成员的响应式只有在初始化的时候(`new Vue`)才会设置，一旦错过时机，通过添加成员方式就无法使其成为响应式数据
 - 内部原理：调用defineReactive方法即可，即通过Object.defineProperty方法设置getter/setter进行数据劫持（getter中进行依赖收集，setter中进行派发更新）
 
-## 请简述 Diff 算法的执行过程
+## 2. 请简述 Diff 算法的执行过程
 
 答：
 - step1： 同时遍历新旧节点children，以length少的为循环数
@@ -30,14 +30,16 @@
     - 新节点剩余：找到剩余节点并创建，插入到指定位置
 # 编程题
 
-## 模拟 VueRouter 的 hash 模式的实现，实现思路和 History 模式类似，把 URL 中的 # 后面的内容作为路由的地址，可以通过 hashchange 事件监听路由地址的变化。
+## 1. 模拟 VueRouter 的 hash 模式的实现，实现思路和 History 模式类似，把 URL 中的 # 后面的内容作为路由的地址，可以通过 hashchange 事件监听路由地址的变化。
 
 答：代码见 code/vue-hash-router
 
-## 在模拟 Vue.js 响应式源码的基础上实现 v-html 指令，以及 v-on 指令。
+## 2. 在模拟 Vue.js 响应式源码的基础上实现 v-html 指令，以及 v-on 指令。
 
 答：代码见 code/simple-directive
 
-## 参考 Snabbdom 提供的电影列表的示例，利用Snabbdom 实现类似的效果，如图：
+## 3. 参考 Snabbdom 提供的电影列表的示例，利用Snabbdom 实现类似的效果，如图：
 
 答：代码见 code/movie-list
+
+# `项目说明文档在对应项目的RRADME.md中`
